@@ -1,0 +1,9 @@
+$layout-width: 1024px;
+$layout-height: 774px;
+$layout-aspect: calc($layout-width / $layout-height);
+
+$layout-background: #004980;
+
+// @debug "figma layout width: #{$layout-width}";
+// @debug "figma layout height: #{$layout-height}";
+// @debug "figma layout aspect: #{$layout-aspect}";

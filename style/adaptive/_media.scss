@@ -1,0 +1,30 @@
+@media (orientation: landscape) {
+    $page-width: calc(100vh * $layout-aspect);
+    $page-height: 100vh;
+
+    .page{
+        width: scale-width(1024px, $page-width);
+        height: scale-height(774px, $page-height);
+    }
+
+    .dialog {
+        width: scale-width(480px, $page-width);
+        height: scale-height(459px, $page-height);
+    }
+
+}
+
+@media (orientation: portrait) {
+    $page-width: 100vw;
+    $page-height: calc(100vw / $layout-aspect);
+
+    .page {
+        width: scale-width(1024px, $page-width);
+        height: scale-height(774px, $page-height);
+    }
+
+    .dialog {
+        width: scale-width(480px, $page-width);
+        height: scale-height(459px, $page-height);
+    }
+}

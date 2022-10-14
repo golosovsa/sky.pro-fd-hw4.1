@@ -1,0 +1,8 @@
+@function scale-width($width, $page-width) {
+    @return calc($width * $page-width / $layout-width);
+}
+
+@function scale-height($height, $page-height) {
+    @return calc($height * $page-height / $layout-height);
+}
+
