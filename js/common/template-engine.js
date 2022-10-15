@@ -2,21 +2,21 @@
  * template engine
  */
 
-function _templateAddClasses(element, classes) {
+function _templateEngineAddClasses(element, classes) {
     if (!Array.isArray(classes)) {
         element.classList.add(String(classes));
         return;
-    } 
+    }
 
     classes.map(cls => {
         element.classList.add(String(cls));
     })
 }
 
-function _templateAddAttrs(element, attrs) {
-    if (Array.isArray(attrs) || typeof(attrs) !== 'object') {
+function _templateEngineAddAttrs(element, attrs) {
+    if (Array.isArray(attrs) || typeof (attrs) !== 'object') {
         throw "The 'attrs' variable must be an 'object' type.";
-    } 
+    }
 
     for (const [name, value] of Object.entries(attrs)) {
         element.setAttribute(String(name), String(value));
@@ -25,7 +25,7 @@ function _templateAddAttrs(element, attrs) {
 
 
 function _templateEngineArray(templateArray) {
-    fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
     templateArray.forEach(element => {
         fragment.appendChild(templateEngine(element));
     });
@@ -38,24 +38,25 @@ function _templateEngineObject(templateObject) {
         throw "The 'templateObject' variable has no 'tag' attribute";
     }
 
-    element = document.createElement(templateObject.tag);
-    console.log("tag =", templateObject.tag);
+    let content = undefined;
+
+    if ("content" in templateObject) {
+        content = templateEngine(templateObject.content);
+    }
+
+    const element = document.createElement(templateObject.tag);
+    if (content) {
+        element.appendChild(content);
+    }
 
     if ("cls" in templateObject) {
-        _templateAddClasses(element, templateObject.cls);
+        _templateEngineAddClasses(element, templateObject.cls);
     }
 
 
     if ("attrs" in templateObject) {
-        _templateAddAttrs(element, templateObject.attrs);
+        _templateEngineAddAttrs(element, templateObject.attrs);
     }
-
-
-    if ("content" in templateObject) {
-        content = templateEngine(templateObject.content);
-        element.appendChild(content);    
-    }
-
 
     return element;
 }
@@ -66,7 +67,7 @@ function templateEngine(template) {
         return _templateEngineArray(template);
     }
 
-    if (typeof(template) === 'object') {
+    if (typeof (template) === 'object') {
         return _templateEngineObject(template);
     }
 

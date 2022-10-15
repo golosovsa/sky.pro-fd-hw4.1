@@ -1,9 +1,19 @@
-$layout-width: 1024px;
-$layout-height: 774px;
-$layout-aspect: calc($layout-width / $layout-height);
+@use "sass:math";
 
-$layout-background: #004980;
+$layout-width: 1024;
+$layout-height: 774;
+$layout-aspect: math.div($layout-width, $layout-height);
 
-// @debug "figma layout width: #{$layout-width}";
-// @debug "figma layout height: #{$layout-height}";
-// @debug "figma layout aspect: #{$layout-aspect}";
+// @mixin defineCSSVariable($name, $value) {
+//     #{}
+// }
+
+:root {
+    --layout-width: #{$layout-width};
+    --layout-height: #{$layout-height};
+    --layout-aspect: #{$layout-aspect};
+    --layout-background: #004980;
+
+    --page-width: #{$layout-width};
+    --page-height: #{$layout-height};
+}

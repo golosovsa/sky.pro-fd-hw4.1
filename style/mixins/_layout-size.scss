@@ -1,0 +1,4 @@
+@mixin layout-size($width, $height) {
+    width: scale-width($width);
+    height: scale-height($height);
+}
