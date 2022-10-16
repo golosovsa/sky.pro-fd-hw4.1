@@ -56,7 +56,7 @@ class BaseDialog{
     }
 
     show() {
-        this.dialog.showModal()
+        this.dialog.showModal();
         return new Promise(resolve => {
             this.dialog.addEventListener('cancel', () => {
                 resolve(false);
@@ -66,5 +66,9 @@ class BaseDialog{
                 resolve(data);
             }, { once: true });
         })
+    }
+
+    close() {
+        this.dialog.close();
     }
 }
