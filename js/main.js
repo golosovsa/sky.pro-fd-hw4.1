@@ -1,7 +1,3 @@
-const APP_PAGES = [
-    "select-difficulty",
-];
-
 document.addEventListener("DOMContentLoaded", () => {
     document.app = {
         settings: {
@@ -26,9 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.app.settings.currentPage = document.app.pages.pageSelectDifficulty;
 
     document.app.run = async function() {
-        
         const pages = Object.values(document.app.pages);
-
         const _nextPage = () => {
             const pageIndex = (pages.indexOf(document.app.settings.currentPage) + 1) % pages.length;
             return pages[pageIndex];
@@ -36,17 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         while (true) {
             const action = await document.app.settings.currentPage.run(document.app.settings);
-            
             if (action === "next") {
                 document.app.settings.currentPage = _nextPage();
             }
-
             await timeout(300);
         }
     }
 
     document.app.run();
-
 });
 
 window.addEventListener("beforeunload", () => {
