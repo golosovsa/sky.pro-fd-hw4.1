@@ -12,6 +12,7 @@ plugins:
 
 parserOptions:
     ecmaVersion: 2020
+    sourceType: module
 
 rules:
     prettier/prettier: error
@@ -20,5 +21,4 @@ rules:
     eqeqeq:
         - error
         - always
-    no-unused-vars: off
-    no-undef: off
+

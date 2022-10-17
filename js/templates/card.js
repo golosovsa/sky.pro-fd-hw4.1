@@ -1,4 +1,4 @@
-const cardTemplate = {
+export const cardTemplate = {
     tag: "div",
     cls: "card",
     content: [

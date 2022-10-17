@@ -1,3 +1,7 @@
+import { DialogDifficulty } from "./widgets/dialog-difficulty";
+import { PageDifficulty } from "./pages/page-difficulty";
+import { timeout } from "./common/timeout";
+
 document.addEventListener("DOMContentLoaded", () => {
     document.app = {
         settings: {

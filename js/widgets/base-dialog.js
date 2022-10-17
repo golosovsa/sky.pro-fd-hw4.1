@@ -2,9 +2,11 @@
  * class base dialog
  */
 
+import { templateEngine } from "../common/template-engine";
+
 const KEYCODE_TAB = 9;
 
-class BaseDialog {
+export class BaseDialog {
     constructor(template) {
         this.dialog = templateEngine(template);
         this.dialogForm = this.dialog.querySelector(".dialog__form");
