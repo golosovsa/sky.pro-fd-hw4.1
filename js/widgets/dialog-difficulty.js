@@ -2,14 +2,16 @@
  * class dialog difficulty
  */
 
-
 class DialogDifficulty extends BaseDialog {
-
     constructor() {
-        super(dialogDifficulty);
+        super(dialogDifficultyTemplate);
 
-        this.firstFocusableElements = this.dialogForm.querySelector(".dialog-difficulty__radio-container");
-        this.lastFocusableElement = this.dialogForm.querySelector(".dialog-difficulty__button");
+        this.firstFocusableElements = this.dialogForm.querySelector(
+            ".dialog-difficulty__radio-container"
+        );
+        this.lastFocusableElement = this.dialogForm.querySelector(
+            ".dialog-difficulty__button"
+        );
     }
 
     _firstFocusableElement() {
@@ -20,10 +22,11 @@ class DialogDifficulty extends BaseDialog {
         return this.lastFocusableElement;
     }
 
-    show(selected=undefined) {
-        
+    show(selected = undefined) {
         if (selected) {
-            const selectedRadio = this.dialogForm.querySelector(`.dialog-difficulty__radio[value='${selected}']`);
+            const selectedRadio = this.dialogForm.querySelector(
+                `.dialog-difficulty__radio[value='${selected}']`
+            );
             if (selectedRadio) {
                 selectedRadio.checked = true;
             }
@@ -31,5 +34,4 @@ class DialogDifficulty extends BaseDialog {
 
         return super.show();
     }
-
 }

@@ -1,7 +1,7 @@
-const dialogDifficulty = {
-    ...baseDialog,
+const dialogDifficultyTemplate = {
+    ...baseDialogTemplate,
     content: {
-        ...baseDialog.content,
+        ...baseDialogTemplate.content,
         content: [
             {
                 tag: "fieldset",

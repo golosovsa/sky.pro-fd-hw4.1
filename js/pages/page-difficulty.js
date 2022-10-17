@@ -3,9 +3,8 @@
  */
 
 class PageDifficulty extends BasePage {
-
     constructor(container, dialogDifficulty) {
-        super(container, {dialogDifficulty: dialogDifficulty,});
+        super(container, { dialogDifficulty: dialogDifficulty });
     }
 
     async run(settings) {
@@ -17,5 +16,4 @@ class PageDifficulty extends BasePage {
         this.dialogDifficulty.close();
         return "next";
     }
-
 }
