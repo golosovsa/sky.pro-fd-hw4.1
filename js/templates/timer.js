@@ -4,7 +4,7 @@ const timerTemplate = {
     content: [
         {
             tag: "p",
-            class: "timer__time",
+            cls: "timer__time",
             content: "00:00",
         },
         {
@@ -14,7 +14,7 @@ const timerTemplate = {
         },
         {
             tag: "p",
-            cls: ["timer__title", "timer__title_minutes"],
+            cls: ["timer__title", "timer__title_seconds"],
             content: "sec",
         },
     ],

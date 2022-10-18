@@ -13,6 +13,11 @@
 # Status
 
 -   [x] Git configured
--   [x] Page made up
+-   [x] Difficulty page made up
 -   [x] Difficulty level selection logic
 -   [x] Page selection logic
+-   [x] Set up linters
+-   [x] Set up Prettier.
+-   [x] Pages 1-2 made up
+-   [x] HTML validator
+-   [x] CSS validator

@@ -15,6 +15,9 @@
 @import "widgets/dialog-difficulty";
 @import "widgets/card";
 @import "widgets/card-table";
+@import "widgets/timer";
+
+@import "pages/game";
 
 .page {
     @include layout-size(1024, 774);

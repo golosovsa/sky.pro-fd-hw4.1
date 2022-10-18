@@ -1,5 +1,6 @@
 .card-table {
     display: grid;
+    grid-template-columns: repeat(9, 1fr);
     column-gap: scale-width(15);
     row-gap: scale-height(15);
     width: min-content;

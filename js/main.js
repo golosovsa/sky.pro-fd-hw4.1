@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pageContainer: document.querySelector(".page"),
             dialogDifficulty: new DialogDifficulty(),
             cardTable: new CardTable(),
+            timer: new Timer(),
         },
     };
 
@@ -24,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
         pageSelectDifficulty: new PageDifficulty(
             document.app.blocks.pageContainer,
             document.app.blocks.dialogDifficulty
+        ),
+        pageGame: new PageGame(
+            document.app.blocks.pageContainer,
+            document.app.blocks.cardTable,
+            document.app.blocks.timer
         ),
     };
 
@@ -50,11 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    //document.app.run();
-    document.app.blocks.cardTable.spreadOut(
-        document.app.blocks.pageContainer,
-        9
-    );
+    document.app.run();
 });
 
 window.addEventListener("beforeunload", () => {
