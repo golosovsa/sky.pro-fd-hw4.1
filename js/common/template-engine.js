@@ -59,7 +59,7 @@ function _templateEngineObject(templateObject) {
     return element;
 }
 
-export function templateEngine(template) {
+function templateEngine(template) {
     if (Array.isArray(template)) {
         return _templateEngineArray(template);
     }

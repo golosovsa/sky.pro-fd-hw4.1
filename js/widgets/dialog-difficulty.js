@@ -2,10 +2,10 @@
  * class dialog difficulty
  */
 
-import { BaseDialog } from "./base-dialog";
-import { dialogDifficultyTemplate } from "../templates/dialog-difficulty";
+// import { BaseDialog } from "./base-dialog";
+// import { dialogDifficultyTemplate } from "../templates/dialog-difficulty";
 
-export class DialogDifficulty extends BaseDialog {
+class DialogDifficulty extends BaseDialog {
     constructor() {
         super(dialogDifficultyTemplate);
 
@@ -28,7 +28,7 @@ export class DialogDifficulty extends BaseDialog {
     show(selected = undefined) {
         if (selected) {
             const selectedRadio = this.dialogForm.querySelector(
-                `.dialog-difficulty__radio[value='${selected}']`
+                `input[type='radio'][value='${selected}'].dialog-difficulty__radio`
             );
             if (selectedRadio) {
                 selectedRadio.checked = true;

@@ -1,6 +1,7 @@
-import { DialogDifficulty } from "./widgets/dialog-difficulty";
-import { PageDifficulty } from "./pages/page-difficulty";
-import { timeout } from "./common/timeout";
+// import { DialogDifficulty } from "./widgets/dialog-difficulty";
+// import { Card } from "./widgets/card";
+// import { PageDifficulty } from "./pages/page-difficulty";
+// import { timeout } from "./common/timeout";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.app = {
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         blocks: {
             pageContainer: document.querySelector(".page"),
             dialogDifficulty: new DialogDifficulty(),
+            cardTable: new CardTable(),
         },
     };
 
@@ -48,7 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    document.app.run();
+    //document.app.run();
+    document.app.blocks.cardTable.spreadOut(
+        document.app.blocks.pageContainer,
+        9
+    );
 });
 
 window.addEventListener("beforeunload", () => {

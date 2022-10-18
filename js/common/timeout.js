@@ -2,6 +2,6 @@
  * function timeout
  */
 
-export function timeout(milliseconds) {
+function timeout(milliseconds) {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }

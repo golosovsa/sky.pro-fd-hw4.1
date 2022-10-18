@@ -1,6 +1,6 @@
-import { baseDialogTemplate } from "./base-dialog";
+// import { baseDialogTemplate } from "./base-dialog";
 
-export const dialogDifficultyTemplate = {
+const dialogDifficultyTemplate = {
     ...baseDialogTemplate,
     content: {
         ...baseDialogTemplate.content,

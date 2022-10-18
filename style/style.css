@@ -75,7 +75,7 @@ body {
   align-content: center;
 }
 .dialog-difficulty__legend {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: calc(40 * var(--page-height) / var(--layout-height));
@@ -93,9 +93,6 @@ body {
   -moz-column-gap: calc(24 * var(--page-width) / var(--layout-width));
        column-gap: calc(24 * var(--page-width) / var(--layout-width));
 }
-.dialog-difficulty__radio, .dialog-difficulty__radio:focus, .dialog-difficulty__radio:active, .dialog-difficulty__radio:checked {
-  outline: none;
-}
 .dialog-difficulty__radio {
   width: calc(98 * var(--page-width) / var(--layout-width));
   height: calc(98 * var(--page-height) / var(--layout-height));
@@ -103,12 +100,15 @@ body {
      -moz-appearance: none;
           appearance: none;
   border: none;
-  background: #ffffff;
+  background: #fff;
   border-radius: min(12 * var(--page-width) / var(--layout-width), 12 * var(--page-height) / var(--layout-height));
   transition: background-color 0.2s linear;
 }
+.dialog-difficulty__radio, .dialog-difficulty__radio:focus, .dialog-difficulty__radio:active, .dialog-difficulty__radio:checked {
+  outline: none;
+}
 .dialog-difficulty__radio:checked {
-  background: #aaaaaa;
+  background: #aaa;
 }
 .dialog-difficulty__radio:focus {
   border: calc(5 * var(--page-width) / var(--layout-width)) solid #98f100;
@@ -117,7 +117,7 @@ body {
   background-color: #dddddd;
 }
 .dialog-difficulty__radio-label {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: calc(64 * var(--page-height) / var(--layout-height));
@@ -136,12 +136,12 @@ body {
 .dialog-difficulty__button {
   width: calc(246 * var(--page-width) / var(--layout-width));
   height: calc(50 * var(--page-height) / var(--layout-height));
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: calc(24 * var(--page-height) / var(--layout-height));
   line-height: calc(32 * var(--page-height) / var(--layout-height));
-  color: #ffffff;
+  color: #fff;
   background: #7ac100;
   border-radius: min(12 * var(--page-width) / var(--layout-width), 12 * var(--page-height) / var(--layout-height));
   margin-top: calc(67 * var(--page-height) / var(--layout-height));
@@ -154,6 +154,156 @@ body {
 }
 .dialog-difficulty__button:focus, .dialog-difficulty__button:hover, .dialog-difficulty__button:active {
   background: #98f100;
+}
+
+.card {
+  width: calc(95 * var(--page-width) / var(--layout-width));
+  height: calc(133 * var(--page-height) / var(--layout-height));
+}
+.card__container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  perspective: calc(200 * var(--page-width) / var(--layout-width));
+}
+.card__face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: rotateY(180deg);
+}
+.card__face-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  border-radius: calc(4 * var(--page-width) / var(--layout-width));
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.card__letter {
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.card__letter_left-top {
+  left: calc(6 * var(--page-width) / var(--layout-width));
+  top: calc(5 * var(--page-height) / var(--layout-height));
+}
+.card__letter_right-bottom {
+  right: calc(6 * var(--page-width) / var(--layout-width));
+  bottom: calc(5 * var(--page-height) / var(--layout-height));
+  transform: rotate(180deg);
+}
+.card__suit {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.card__suit_left-top {
+  width: calc(7 * var(--page-width) / var(--layout-width));
+  height: calc(7 * var(--page-height) / var(--layout-height));
+  position: absolute;
+  left: calc(9 * var(--page-width) / var(--layout-width));
+  top: calc(35 * var(--page-height) / var(--layout-height));
+}
+.card__suit_right-bottom {
+  width: calc(7 * var(--page-width) / var(--layout-width));
+  height: calc(7 * var(--page-height) / var(--layout-height));
+  position: absolute;
+  right: calc(9 * var(--page-width) / var(--layout-width));
+  bottom: calc(35 * var(--page-height) / var(--layout-height));
+  transform: rotate(180deg);
+}
+.card__suit_center {
+  width: calc(25 * var(--page-width) / var(--layout-width));
+  height: calc(25 * var(--page-height) / var(--layout-height));
+}
+.card__shirt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/static/img/shirt.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotateY(0deg);
+}
+.card__face, .card__shirt {
+  transition: transform 1s ease-out;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.card:hover .card__face {
+  transform: rotateY(360deg);
+}
+.card:hover .card__shirt {
+  transform: rotateY(180deg);
+}
+
+/* stylelint-disable */
+[data-letter].card__letter::after {
+  font-family: StratosSkyeng, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(24 * var(--page-height) / var(--layout-height));
+  line-height: calc(32 * var(--page-height) / var(--layout-height));
+  color: black;
+  content: attr(data-letter);
+  text-transform: uppercase;
+}
+
+[data-suit=clubs].card__suit {
+  background-image: url("/static/img/clubs.svg");
+}
+
+[data-suit=diamonds].card__suit {
+  background-image: url("/static/img/diamonds.svg");
+}
+
+[data-suit=hearts].card__suit {
+  background-image: url("/static/img/hearts.svg");
+}
+
+[data-suit=spades].card__suit {
+  background-image: url("/static/img/spades.svg");
+}
+
+/* stylelint-enable */
+.card-table {
+  display: grid;
+  -moz-column-gap: calc(15 * var(--page-width) / var(--layout-width));
+       column-gap: calc(15 * var(--page-width) / var(--layout-width));
+  row-gap: calc(15 * var(--page-height) / var(--layout-height));
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+[data-pairs="3"].card-table {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[data-pairs="6"].card-table {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+[data-pairs="9"].card-table {
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .page {

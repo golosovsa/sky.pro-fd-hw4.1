@@ -2,7 +2,7 @@
  * class base page
  */
 
-export class BasePage {
+class BasePage {
     constructor(container, blocks) {
         this.container = container;
         for (const [blockName, blockInstance] of Object.entries(blocks)) {

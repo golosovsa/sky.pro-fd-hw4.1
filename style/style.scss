@@ -13,6 +13,8 @@
 
 @import "widgets/base-dialog";
 @import "widgets/dialog-difficulty";
+@import "widgets/card";
+@import "widgets/card-table";
 
 .page {
     @include layout-size(1024, 774);

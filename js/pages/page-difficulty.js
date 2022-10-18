@@ -2,9 +2,9 @@
  * class pageDifficulty
  */
 
-import { BasePage } from "./base-page";
+// import { BasePage } from "./base-page";
 
-export class PageDifficulty extends BasePage {
+class PageDifficulty extends BasePage {
     constructor(container, dialogDifficulty) {
         super(container, { dialogDifficulty: dialogDifficulty });
     }
