@@ -6,6 +6,10 @@
 
 [source](https://skyengpublic.notion.site/4-2-Code-Review-cf4f3ee047454696a2d4a6263b6dccbe)
 
+# Homework 4.3
+
+[source](https://skyengpublic.notion.site/4-3-Code-Linting-0aa5177cf116428eaff18c5d95de4ce2)
+
 # layout
 
 [source](https://www.figma.com/file/Xk8ocvZA9NlMmA0szZeI5h/%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-JS?node-id=4325%3A2)
