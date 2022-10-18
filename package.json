@@ -1,5 +1,5 @@
 {
-    "name": "sky.pro-fd-hw4.1-hw4.2",
+    "name": "sky.pro-fd-hw4.1-hw4.3",
     "version": "1.0.0",
     "description": "[source](https://skyengpublic.notion.site/4-1-Git-a049d735e0a6491fa80d86eb43131673)",
     "main": "index.js",
@@ -14,15 +14,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.2.git"
+        "url": "git+https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.3.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.2/issues"
+        "url": "https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.3/issues"
     },
-    "homepage": "https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.2#readme",
+    "homepage": "https://github.com/golosovsa/sky.pro-fd-hw4.1-hw4.3#readme",
     "devDependencies": {
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
