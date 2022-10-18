@@ -1,0 +1,19 @@
+.card-table {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    column-gap: scale-width(15);
+    row-gap: scale-height(15);
+    width: min-content;
+}
+
+[data-pairs="3"].card-table {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+[data-pairs="6"].card-table {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+[data-pairs="9"].card-table {
+    grid-template-columns: repeat(6, 1fr);
+}

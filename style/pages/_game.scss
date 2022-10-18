@@ -1,0 +1,49 @@
+@use "sass:color";
+
+.game {
+    height: 100%;
+    margin-left: scale-width(25);
+    margin-right: scale-width(25);
+    box-sizing: border-box;
+
+    &__header {
+        box-sizing: border-box;
+        height: scale-height(148);
+        display: flex;
+        flex-flow: row nowrap;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__main {
+        height: calc(100% - scale-height(148));
+        display: flex;
+        flex-flow: row nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__button {
+        @include layout-size(246, 50);
+        @include layout-font(24, 32, 400, white);
+
+        background: #7ac100;
+        border-radius: scale-width(12);
+        transition: background-color 0.2s linear;
+        display: flex;
+        flex-flow: column nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+        &::content {
+            pointer-events: none;
+        }
+
+        &:hover {
+            background: color.scale(#7ac100, $lightness: 15%);
+        }
+    }
+}

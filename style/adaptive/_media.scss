@@ -1,14 +1,11 @@
 @media (orientation: landscape) {
-
     :root {
         --page-width: calc(100vh * var(--layout-aspect));
         --page-height: 100vh;
     }
-
 }
 
 @media (orientation: portrait) {
-    
     :root {
         --page-width: 100vw;
         --page-height: calc(100vw / var(--layout-aspect));

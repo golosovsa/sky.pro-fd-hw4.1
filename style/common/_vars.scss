@@ -13,7 +13,6 @@ $layout-aspect: math.div($layout-width, $layout-height);
     --layout-height: #{$layout-height};
     --layout-aspect: #{$layout-aspect};
     --layout-background: #004980;
-
     --page-width: #{$layout-width};
     --page-height: #{$layout-height};
 }

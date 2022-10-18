@@ -1,7 +1,9 @@
-const dialogDifficulty = {
-    ...baseDialog,
+// import { baseDialogTemplate } from "./base-dialog";
+
+const dialogDifficultyTemplate = {
+    ...baseDialogTemplate,
     content: {
-        ...baseDialog.content,
+        ...baseDialogTemplate.content,
         content: [
             {
                 tag: "fieldset",

@@ -8,13 +8,13 @@ function _templateEngineAddClasses(element, classes) {
         return;
     }
 
-    classes.map(cls => {
+    classes.map((cls) => {
         element.classList.add(String(cls));
-    })
+    });
 }
 
 function _templateEngineAddAttrs(element, attrs) {
-    if (Array.isArray(attrs) || typeof (attrs) !== 'object') {
+    if (Array.isArray(attrs) || typeof attrs !== "object") {
         throw "The 'attrs' variable must be an 'object' type.";
     }
 
@@ -23,17 +23,16 @@ function _templateEngineAddAttrs(element, attrs) {
     }
 }
 
-
 function _templateEngineArray(templateArray) {
     const fragment = document.createDocumentFragment();
-    templateArray.forEach(element => {
+    templateArray.forEach((element) => {
         fragment.appendChild(templateEngine(element));
     });
     return fragment;
 }
 
 function _templateEngineObject(templateObject) {
-    if (!"tag" in templateObject) {
+    if (!("tag" in templateObject)) {
         console.dir(templateObject);
         throw "The 'templateObject' variable has no 'tag' attribute";
     }
@@ -53,7 +52,6 @@ function _templateEngineObject(templateObject) {
         _templateEngineAddClasses(element, templateObject.cls);
     }
 
-
     if ("attrs" in templateObject) {
         _templateEngineAddAttrs(element, templateObject.attrs);
     }
@@ -62,15 +60,13 @@ function _templateEngineObject(templateObject) {
 }
 
 function templateEngine(template) {
-
     if (Array.isArray(template)) {
         return _templateEngineArray(template);
     }
 
-    if (typeof (template) === 'object') {
+    if (typeof template === "object") {
         return _templateEngineObject(template);
     }
 
     return document.createTextNode(String(template));
-
 }

@@ -1,5 +1,5 @@
 @mixin layout-font($font-size, $line-height, $font-weight, $color) {
-    font-family: 'StratosSkyeng';
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: $font-weight;
     font-size: scale-height($font-size);

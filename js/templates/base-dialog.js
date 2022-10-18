@@ -1,4 +1,4 @@
-const baseDialog = {
+const baseDialogTemplate = {
     tag: "dialog",
     cls: "dialog",
     content: {
@@ -6,6 +6,6 @@ const baseDialog = {
         attrs: {
             method: "dialog",
         },
-        cls: "dialog__form"
-    }
-}
+        cls: "dialog__form",
+    },
+};

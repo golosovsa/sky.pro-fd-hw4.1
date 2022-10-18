@@ -1,0 +1,25 @@
+.timer {
+    position: relative;
+    left: 0;
+    top: 0;
+
+    &__time {
+        @include layout-font(64, 72, 400, white);
+    }
+
+    &__title {
+        @include layout-font(16, 32, 400, white);
+
+        position: absolute;
+
+        &_minutes {
+            left: scale-width(40);
+            top: scale-height(-20);
+        }
+
+        &_seconds {
+            left: scale-width(125);
+            top: scale-height(-20);
+        }
+    }
+}

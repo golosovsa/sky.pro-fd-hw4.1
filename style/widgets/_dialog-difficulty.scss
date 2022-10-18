@@ -16,6 +16,7 @@
 
     &__legend {
         @include layout-font(40, 48, 400, #004980);
+
         width: scale-width(210);
         text-align: center;
     }
@@ -29,6 +30,16 @@
         column-gap: scale-width(24);
     }
 
+    &__radio {
+        @include layout-size(98, 98);
+
+        appearance: none;
+        border: none;
+        background: #fff;
+        border-radius: min(scale-width(12), scale-height(12));
+        transition: background-color 0.2s linear;
+    }
+
     &__radio,
     &__radio:focus,
     &__radio:active,
@@ -36,30 +47,21 @@
         outline: none;
     }
 
-    &__radio {
-        @include layout-size(98, 98);
-
-        appearance: none;
-        border: none;
-        background: #FFFFFF;
-        border-radius: min(scale-width(12), scale-height(12));
-        transition: background-color 0.2s linear;
-    }
-
     &__radio:checked {
-        background: #AAAAAA;
+        background: #aaa;
     }
 
     &__radio:focus {
-        border: scale-width(5) solid color.scale(#7AC100, $lightness: 15%);
+        border: scale-width(5) solid color.scale(#7ac100, $lightness: 15%);
     }
 
     &__radio:hover {
-        background-color: color.scale(#AAAAAA, $lightness: 60%);
+        background-color: color.scale(#aaa, $lightness: 60%);
     }
 
-    &__radio-label{
-        @include layout-font(64, 72, 400, #0080C1);
+    &__radio-label {
+        @include layout-font(64, 72, 400, #0080c1);
+
         display: flex;
         flex-flow: column nowrap;
         align-content: center;
@@ -74,11 +76,10 @@
 
     &__button {
         @include layout-size(246, 50);
-        @include layout-font(24, 32, 400, #FFFFFF);
+        @include layout-font(24, 32, 400, #fff);
 
-        background: #7AC100;
+        background: #7ac100;
         border-radius: min(scale-width(12), scale-height(12));
-
         margin-top: scale-height(67);
         transition: background-color 0.2s linear;
     }
@@ -93,8 +94,8 @@
     }
 
     &__button:focus,
-    &__button:hover         ,
+    &__button:hover,
     &__button:active {
-        background: color.scale(#7AC100, $lightness: 15%);
+        background: color.scale(#7ac100, $lightness: 15%);
     }
 }
