@@ -3,6 +3,7 @@
  */
 
 import { templateEngine } from "../common/template-engine";
+import { timerTemplate } from "../templates/timer";
 
 export class Timer {
     constructor(container = undefined) {

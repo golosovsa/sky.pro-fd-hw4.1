@@ -3,6 +3,9 @@
  */
 
 import { BasePage } from "./base-page";
+import { templateEngine } from "../common/template-engine";
+import { timeout } from "../common/timeout";
+import { pageGameTemplate } from "../templates/page-game";
 
 const DIFFICULTY_VALUES = {
     1: 3,
@@ -25,7 +28,7 @@ export class PageGame extends BasePage {
         this.buttonStart.addEventListener("click", this.onStartPressed);
     }
 
-    onStartPressed(event) {
+    onStartPressed() {
         this.timer.toggle();
     }
 

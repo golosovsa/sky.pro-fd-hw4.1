@@ -5,6 +5,8 @@
 import { templateEngine } from "../common/template-engine";
 import { randomSample } from "../common/random-sample";
 import { randomShuffle } from "../common/random-shuffle";
+import { cardTableTemplate } from "../templates/card-table";
+import { Card } from "./card";
 
 const CARDS = [
     { suit: "clubs", letter: "6" },
