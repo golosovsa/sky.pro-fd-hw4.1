@@ -2,13 +2,15 @@
  * class page game
  */
 
+import { BasePage } from "./base-page";
+
 const DIFFICULTY_VALUES = {
     1: 3,
     2: 6,
     3: 9,
 };
 
-class PageGame extends BasePage {
+export class PageGame extends BasePage {
     constructor(container, cardTable, timer) {
         super(container, { cardTable: cardTable, timer: timer });
         this.element = templateEngine(pageGameTemplate);

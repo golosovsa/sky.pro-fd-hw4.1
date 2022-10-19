@@ -1,7 +1,11 @@
-// import { DialogDifficulty } from "./widgets/dialog-difficulty";
-// import { Card } from "./widgets/card";
-// import { PageDifficulty } from "./pages/page-difficulty";
-// import { timeout } from "./common/timeout";
+import "/style/style.scss";
+
+import { timeout } from "./common/timeout";
+import { DialogDifficulty } from "./widgets/dialog-difficulty";
+import { CardTable } from "./widgets/card-table";
+import { Timer } from "./widgets/timer";
+import { PageDifficulty } from "./pages/page-difficulty";
+import { PageGame } from "./pages/page-game";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.app = {

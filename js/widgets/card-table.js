@@ -2,6 +2,10 @@
  * class card table
  */
 
+import { templateEngine } from "../common/template-engine";
+import { randomSample } from "../common/random-sample";
+import { randomShuffle } from "../common/random-shuffle";
+
 const CARDS = [
     { suit: "clubs", letter: "6" },
     { suit: "clubs", letter: "7" },
@@ -44,7 +48,7 @@ const CARDS = [
     { suit: "spades", letter: "T" },
 ];
 
-class CardTable {
+export class CardTable {
     constructor() {
         this.element = templateEngine(cardTableTemplate);
         this.cards = [];

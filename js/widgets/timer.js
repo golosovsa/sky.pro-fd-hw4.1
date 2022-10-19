@@ -2,7 +2,9 @@
  * class timer
  */
 
-class Timer {
+import { templateEngine } from "../common/template-engine";
+
+export class Timer {
     constructor(container = undefined) {
         this.container = undefined;
         this.element = templateEngine(timerTemplate);

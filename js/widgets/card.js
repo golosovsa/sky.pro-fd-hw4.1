@@ -2,10 +2,10 @@
  * class card
  */
 
-// import { templateEngine } from "./../common/template-engine";
-// import { cardTemplate } from "./../templates/card";
+import { templateEngine } from "./../common/template-engine";
+import { cardTemplate } from "./../templates/card";
 
-class Card {
+export class Card {
     constructor(parent, suit, letter) {
         this.parent = parent;
         this.suit = suit;
