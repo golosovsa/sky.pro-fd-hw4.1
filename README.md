@@ -10,6 +10,10 @@
 
 [source](https://skyengpublic.notion.site/4-3-Code-Linting-0aa5177cf116428eaff18c5d95de4ce2)
 
+# Homework 4.4
+
+[source](https://skyengpublic.notion.site/4-4-8fbd7178aabd4d15bba54213f7dd98cc)
+
 # layout
 
 [source](https://www.figma.com/file/Xk8ocvZA9NlMmA0szZeI5h/%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-JS?node-id=4325%3A2)
@@ -25,3 +29,5 @@
 -   [x] Pages 1-2 made up
 -   [x] HTML validator
 -   [x] CSS validator
+-   [x] Set up webpack
+-   [x] Made game logic

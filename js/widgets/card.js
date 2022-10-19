@@ -12,6 +12,7 @@ export class Card {
         this.letter = letter;
 
         this.element = templateEngine(cardTemplate);
+        this.element.interface = this;
         this._applyDataAttributes();
         this.parent.appendChild(this.element);
     }
@@ -27,5 +28,17 @@ export class Card {
         suitElements.forEach((suit) => {
             suit.dataset.suit = this.suit;
         });
+    }
+
+    valueOf() {
+        return `${this.letter}${this.suit}`.toUpperCase();
+    }
+
+    show() {
+        this.element.classList.add("card_show");
+    }
+
+    hide() {
+        this.element.classList.remove("card_show");
     }
 }
