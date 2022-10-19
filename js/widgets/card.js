@@ -2,16 +2,17 @@
  * class card
  */
 
-// import { templateEngine } from "./../common/template-engine";
-// import { cardTemplate } from "./../templates/card";
+import { templateEngine } from "./../common/template-engine";
+import { cardTemplate } from "./../templates/card";
 
-class Card {
+export class Card {
     constructor(parent, suit, letter) {
         this.parent = parent;
         this.suit = suit;
         this.letter = letter;
 
         this.element = templateEngine(cardTemplate);
+        this.element.interface = this;
         this._applyDataAttributes();
         this.parent.appendChild(this.element);
     }
@@ -27,5 +28,17 @@ class Card {
         suitElements.forEach((suit) => {
             suit.dataset.suit = this.suit;
         });
+    }
+
+    valueOf() {
+        return `${this.letter}${this.suit}`.toUpperCase();
+    }
+
+    show() {
+        this.element.classList.add("card_show");
+    }
+
+    hide() {
+        this.element.classList.remove("card_show");
     }
 }

@@ -1,7 +1,12 @@
-// import { DialogDifficulty } from "./widgets/dialog-difficulty";
-// import { Card } from "./widgets/card";
-// import { PageDifficulty } from "./pages/page-difficulty";
-// import { timeout } from "./common/timeout";
+import "/style/style.scss";
+
+import { timeout } from "./common/timeout";
+import { DialogDifficulty } from "./widgets/dialog-difficulty";
+import { CardTable } from "./widgets/card-table";
+import { Timer } from "./widgets/timer";
+import { PageDifficulty } from "./pages/page-difficulty";
+import { PageGame } from "./pages/page-game";
+import { PageResults } from "./pages/page-results";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.app = {
@@ -12,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ),
             currentGameStartTime: new Date().getTime(),
             currentPage: undefined,
+            lastGameStatus: undefined,
+            lastGameTime: undefined,
         },
         blocks: {
             pageContainer: document.querySelector(".page"),
@@ -31,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.app.blocks.cardTable,
             document.app.blocks.timer
         ),
+        pageResults: new PageResults(document.app.blocks.pageContainer),
     };
 
     document.app.settings.currentPage = document.app.pages.pageSelectDifficulty;

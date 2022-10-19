@@ -2,6 +2,13 @@
  * class card table
  */
 
+import { templateEngine } from "../common/template-engine";
+import { randomSample } from "../common/random-sample";
+import { randomShuffle } from "../common/random-shuffle";
+import { timeout } from "../common/timeout";
+import { cardTableTemplate } from "../templates/card-table";
+import { Card } from "./card";
+
 const CARDS = [
     { suit: "clubs", letter: "6" },
     { suit: "clubs", letter: "7" },
@@ -44,7 +51,7 @@ const CARDS = [
     { suit: "spades", letter: "T" },
 ];
 
-class CardTable {
+export class CardTable {
     constructor() {
         this.element = templateEngine(cardTableTemplate);
         this.cards = [];
@@ -62,6 +69,8 @@ class CardTable {
             this.container.replaceChildren();
         }
 
+        this.element.replaceChildren();
+
         this.container = container;
 
         mixedPairsCardSet.forEach((card) => {
@@ -70,5 +79,19 @@ class CardTable {
         this.element.dataset.pairs = pairsNumber;
 
         this.container.appendChild(this.element);
+    }
+
+    async showAll() {
+        for (const card of this.cards) {
+            card.show();
+            await timeout(300);
+        }
+    }
+
+    async hideAll() {
+        for (const card of this.cards.reverse()) {
+            card.hide();
+            await timeout(100);
+        }
     }
 }

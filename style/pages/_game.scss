@@ -43,7 +43,12 @@
         }
 
         &:hover {
-            background: color.scale(#7ac100, $lightness: 15%);
+            background: color.scale(#7ac100, $lightness: 30%);
+        }
+
+        &_disabled {
+            background: #aaa;
+            pointer-events: none;
         }
     }
 }

@@ -171,6 +171,7 @@ body {
   left: 0;
   top: 0;
   perspective: calc(200 * var(--page-width) / var(--layout-width));
+  pointer-events: none;
 }
 .card__face {
   width: 100%;
@@ -193,6 +194,7 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 .card__letter {
   position: absolute;
@@ -201,6 +203,7 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 .card__letter_left-top {
   left: calc(6 * var(--page-width) / var(--layout-width));
@@ -251,11 +254,12 @@ body {
   transition: transform 1s ease-out;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  pointer-events: none;
 }
-.card:hover .card__face {
+.card_show .card__face {
   transform: rotateY(360deg);
 }
-.card:hover .card__shirt {
+.card_show .card__shirt {
   transform: rotateY(180deg);
 }
 
@@ -387,7 +391,11 @@ body {
   pointer-events: none;
 }
 .game__button:hover {
-  background: #98f100;
+  background: #adff21;
+}
+.game__button_disabled {
+  background: #aaa;
+  pointer-events: none;
 }
 
 .page {

@@ -1,4 +1,4 @@
-const timerTemplate = {
+export const timerTemplate = {
     tag: "div",
     cls: "timer",
     content: [

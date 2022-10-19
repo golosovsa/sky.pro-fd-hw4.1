@@ -1,4 +1,4 @@
-const pageGameTemplate = {
+export const pageGameTemplate = {
     tag: "section",
     cls: "game",
     content: [

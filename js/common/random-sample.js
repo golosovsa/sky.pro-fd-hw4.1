@@ -1,4 +1,4 @@
-function randomSample(collection, howMany) {
+export function randomSample(collection, howMany) {
     const resultLength = Math.min(collection.length, howMany);
     let collectionCopy = Array.from(collection);
     let result = [];

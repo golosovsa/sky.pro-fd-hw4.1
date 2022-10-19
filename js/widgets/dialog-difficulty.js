@@ -2,10 +2,10 @@
  * class dialog difficulty
  */
 
-// import { BaseDialog } from "./base-dialog";
-// import { dialogDifficultyTemplate } from "../templates/dialog-difficulty";
+import { BaseDialog } from "./base-dialog";
+import { dialogDifficultyTemplate } from "../templates/dialog-difficulty";
 
-class DialogDifficulty extends BaseDialog {
+export class DialogDifficulty extends BaseDialog {
     constructor() {
         super(dialogDifficultyTemplate);
 

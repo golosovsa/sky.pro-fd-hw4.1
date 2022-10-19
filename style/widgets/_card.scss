@@ -8,6 +8,7 @@
         left: 0;
         top: 0;
         perspective: scale-width(200);
+        pointer-events: none;
     }
 
     &__face {
@@ -32,6 +33,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+        pointer-events: none;
     }
 
     &__letter {
@@ -53,6 +55,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+        pointer-events: none;
     }
 
     &__suit {
@@ -99,13 +102,22 @@
     &__shirt {
         transition: transform 1s ease-out;
         backface-visibility: hidden;
+        pointer-events: none;
     }
 
-    &:hover &__face {
+    // &:hover &__face {
+    //     transform: rotateY(360deg);
+    // }
+
+    // &:hover &__shirt {
+    //     transform: rotateY(180deg);
+    // }
+
+    &_show &__face {
         transform: rotateY(360deg);
     }
 
-    &:hover &__shirt {
+    &_show &__shirt {
         transform: rotateY(180deg);
     }
 }
