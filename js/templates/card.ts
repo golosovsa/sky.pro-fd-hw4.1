@@ -1,4 +1,4 @@
-export const cardTemplate = {
+export const cardTemplate: TTemplateNode = {
     tag: "div",
     cls: "card",
     content: {

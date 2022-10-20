@@ -1,9 +1,9 @@
 import { baseDialogTemplate } from "./base-dialog";
 
-export const dialogDifficultyTemplate = {
+export const dialogDifficultyTemplate: TTemplateNode = {
     ...baseDialogTemplate,
     content: {
-        ...baseDialogTemplate.content,
+        ...(Array.isArray(baseDialogTemplate.content) ? baseDialogTemplate.content : [baseDialogTemplate.content, ] as Array<TTemplateNode>),
         content: [
             {
                 tag: "fieldset",

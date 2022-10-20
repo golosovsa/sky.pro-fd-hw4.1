@@ -9,7 +9,12 @@ import { PageGame } from "./pages/page-game";
 import { PageResults } from "./pages/page-results";
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.app = {
+
+    (document as any).app = {};
+
+    let app = (document as any).app as TApp;
+
+    app = {
         settings: {
             difficulty: localStorage.getItem("difficulty") || "2",
             timeSpentPlaying: Number(
@@ -20,58 +25,66 @@ document.addEventListener("DOMContentLoaded", () => {
             lastGameStatus: undefined,
             lastGameTime: undefined,
         },
+        container: document.querySelector(".page") as HTMLElement,
         blocks: {
-            pageContainer: document.querySelector(".page"),
             dialogDifficulty: new DialogDifficulty(),
             cardTable: new CardTable(),
             timer: new Timer(),
         },
+        pages: {},
+        run: async function() {}
     };
 
-    document.app.pages = {
+    app.pages = {
         pageSelectDifficulty: new PageDifficulty(
-            document.app.blocks.pageContainer,
-            document.app.blocks.dialogDifficulty
+            app.container,
+            app.blocks.dialogDifficulty as DialogDifficulty
         ),
         pageGame: new PageGame(
-            document.app.blocks.pageContainer,
-            document.app.blocks.cardTable,
-            document.app.blocks.timer
+            app.container,
+            app.blocks.cardTable as CardTable,
+            app.blocks.timer as Timer
         ),
-        pageResults: new PageResults(document.app.blocks.pageContainer),
+        pageResults: new PageResults(app.container),
     };
 
-    document.app.settings.currentPage = document.app.pages.pageSelectDifficulty;
+    app.settings.currentPage = app.pages.pageSelectDifficulty;
 
-    document.app.run = async function () {
-        const pages = Object.values(document.app.pages);
-        const _nextPage = () => {
+    (document as any).app.run = async function(): Promise<void> {
+        const pages = Object.values((document as any).app.pages);
+        const _nextPage = (): IPage => {
             const pageIndex =
-                (pages.indexOf(document.app.settings.currentPage) + 1) %
+                (pages.indexOf((document as any).app.settings.currentPage) + 1) %
                 pages.length;
-            return pages[pageIndex];
+            
+            return pages[pageIndex] as IPage;
         };
+
+        if (!app.settings.currentPage) {
+            return;
+        }
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            const action = await document.app.settings.currentPage.run(
-                document.app.settings
+            const action = await app.settings.currentPage.run(
+                (document as any).app.settings
             );
             if (action === "next") {
-                document.app.settings.currentPage = _nextPage();
+                (document as any).app.settings.currentPage = _nextPage();
             }
             await timeout(300);
         }
     };
 
-    document.app.run();
+    (document as any).app.run();
 });
 
 window.addEventListener("beforeunload", () => {
-    localStorage.setItem("difficulty", document.app.settings.difficulty);
+    let app = (document as any).app as TApp;
+    localStorage.setItem("difficulty", app.settings.difficulty);
     const totalTime =
-        document.app.settings.timeSpentPlaying +
-        (new Date().getTime() - document.app.settings.currentGameStartTime) /
+        app.settings.timeSpentPlaying +
+        (new Date().getTime() - app.settings.currentGameStartTime) /
             1000;
-    localStorage.setItem("timeSpentPlaying", totalTime);
+    localStorage.setItem("timeSpentPlaying", String(totalTime));
 });

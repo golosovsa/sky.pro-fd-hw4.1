@@ -1,4 +1,4 @@
-export const baseDialogTemplate = {
+export const baseDialogTemplate: TTemplateNode = {
     tag: "dialog",
     cls: "dialog",
     content: {

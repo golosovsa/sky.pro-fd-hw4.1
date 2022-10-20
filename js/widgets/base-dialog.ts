@@ -7,9 +7,13 @@ import { templateEngine } from "../common/template-engine";
 const KEYCODE_TAB = 9;
 
 export class BaseDialog {
-    constructor(template) {
-        this.dialog = templateEngine(template);
-        this.dialogForm = this.dialog.querySelector(".dialog__form");
+    dialog: HTMLDialogElement;
+    dialogForm: HTMLFormElement;
+
+    constructor(template: TTemplateNode) {
+        this.dialog = templateEngine(template) as HTMLDialogElement;
+
+        this.dialogForm = this.dialog.querySelector(".dialog__form") as HTMLFormElement;
 
         this.onChangeFocusableElement =
             this.onChangeFocusableElement.bind(this);
@@ -19,13 +23,17 @@ export class BaseDialog {
         document.body.appendChild(this.dialog);
     }
 
-    onChangeFocusableElement(event) {
-        if (event.key !== "Tab" && event.keyCode !== KEYCODE_TAB) {
+    onChangeFocusableElement(event: KeyboardEvent) {
+        if (event.key !== "Tab") {
             return;
         }
 
         const firstFocusableElement = this._firstFocusableElement();
         const lastFocusableElement = this._lastFocusableElement();
+
+        if (!firstFocusableElement || !lastFocusableElement) {
+            return
+        }
 
         if (event.shiftKey) {
             if (document.activeElement === firstFocusableElement) {
@@ -40,19 +48,19 @@ export class BaseDialog {
         }
     }
 
-    _collectFormData() {
-        return Object.fromEntries(new FormData(this.dialogForm).entries());
+    _collectFormData(): Dictionary<string> {
+        return Object.fromEntries(new FormData(this.dialogForm).entries()) as Dictionary<string>;
     }
 
-    _firstFocusableElement() {
-        return null;
+    _firstFocusableElement(): HTMLElement | undefined {
+        return undefined;
     }
 
-    _lastFocusableElement() {
-        return null;
+    _lastFocusableElement(): HTMLElement | undefined {
+        return undefined;
     }
 
-    show() {
+    show(): Promise<Boolean | Dictionary<string>> {
         this.dialog.showModal();
         return new Promise((resolve) => {
             this.dialog.addEventListener(
