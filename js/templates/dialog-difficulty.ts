@@ -1,99 +1,97 @@
 import { baseDialogTemplate } from "./base-dialog";
 
 export const dialogDifficultyTemplate: TTemplateNode = {
-    ...baseDialogTemplate,
-};
-
-((dialogDifficultyTemplate.content as TTemplateNode).content as Array<TTemplateNode>) = [
-    {
-        tag: "fieldset",
-        cls: "dialog-difficulty__fieldset",
+    tag: "dialog",
+    cls: "dialog",
+    content: {
+        tag: "form",
+        attrs: {
+            method: "dialog",
+        },
+        cls: "dialog__form",
         content: [
             {
-                tag: "p",
-                cls: "dialog-difficulty__legend",
-                content: "Выбери сложность",
-            },
-            {
-                tag: "p",
-                cls: "dialog-difficulty__radio-container",
+                tag: "fieldset",
+                cls: "dialog-difficulty__fieldset",
                 content: [
                     {
-                        tag: "label",
-                        cls: "dialog-difficulty__radio-label",
-                        content: [
-                            {
-                                tag: "input",
-                                attrs: {
-                                    type: "radio",
-                                    name: "difficulty",
-                                    value: "1",
-                                },
-                                cls: "dialog-difficulty__radio",
-                            },
-                            {
-                                tag: "span",
-                                content: "1",
-                            },
-                        ],
+                        tag: "p",
+                        cls: "dialog-difficulty__legend",
+                        content: "Выбери сложность",
                     },
                     {
-                        tag: "label",
-                        cls: "dialog-difficulty__radio-label",
+                        tag: "p",
+                        cls: "dialog-difficulty__radio-container",
                         content: [
                             {
-                                tag: "input",
-                                attrs: {
-                                    type: "radio",
-                                    name: "difficulty",
-                                    value: "2",
-                                },
-                                cls: "dialog-difficulty__radio",
+                                tag: "label",
+                                cls: "dialog-difficulty__radio-label",
+                                content: [
+                                    {
+                                        tag: "input",
+                                        attrs: {
+                                            type: "radio",
+                                            name: "difficulty",
+                                            value: "1",
+                                        },
+                                        cls: "dialog-difficulty__radio",
+                                    },
+                                    {
+                                        tag: "span",
+                                        content: "1",
+                                    },
+                                ],
                             },
                             {
-                                tag: "span",
-                                content: "2",
+                                tag: "label",
+                                cls: "dialog-difficulty__radio-label",
+                                content: [
+                                    {
+                                        tag: "input",
+                                        attrs: {
+                                            type: "radio",
+                                            name: "difficulty",
+                                            value: "2",
+                                        },
+                                        cls: "dialog-difficulty__radio",
+                                    },
+                                    {
+                                        tag: "span",
+                                        content: "2",
+                                    },
+                                ],
                             },
-                        ],
-                    },
-                    {
-                        tag: "label",
-                        cls: "dialog-difficulty__radio-label",
-                        content: [
                             {
-                                tag: "input",
-                                attrs: {
-                                    type: "radio",
-                                    name: "difficulty",
-                                    value: "3",
-                                },
-                                cls: "dialog-difficulty__radio",
-                            },
-                            {
-                                tag: "span",
-                                content: "3",
+                                tag: "label",
+                                cls: "dialog-difficulty__radio-label",
+                                content: [
+                                    {
+                                        tag: "input",
+                                        attrs: {
+                                            type: "radio",
+                                            name: "difficulty",
+                                            value: "3",
+                                        },
+                                        cls: "dialog-difficulty__radio",
+                                    },
+                                    {
+                                        tag: "span",
+                                        content: "3",
+                                    },
+                                ],
                             },
                         ],
                     },
                 ],
             },
+            {
+                tag: "button",
+                attrs: {
+                    type: "submit",
+                },
+                cls: "dialog-difficulty__button",
+                content: "Старт",
+            },
         ],
     },
-    {
-        tag: "button",
-        attrs: {
-            type: "submit",
-        },
-        cls: "dialog-difficulty__button",
-        content: "Старт",
-    },
-];
-
-// export const dialogDifficultyTemplate: TTemplateNode = {
-//     ...baseDialogTemplate,
-//     content: {
-//         ...(Array.isArray(baseDialogTemplate.content) ? baseDialogTemplate.content : [baseDialogTemplate.content, ] as Array<TTemplateNode>),
-//         content: [
-            
-//     },
-// };
+};

@@ -1,29 +1,24 @@
 import { timeout } from "../common/timeout";
+import { DialogResults } from "../widgets/dialog-results";
 import { BasePage } from "./base-page";
 
-const MESSAGES: Dictionary<string> = {
-    defeat: "Вы проиграли :(",
-    win: "Вы выйграли :)",
-};
-
 export class PageResults extends BasePage {
-    constructor(container: HTMLElement) {
+    dialogResults: DialogResults;
+    constructor(container: HTMLElement, dialogResults: DialogResults) {
         super(container);
+
+        this.dialogResults = dialogResults;
     }
 
     async run(settings: TSettings): Promise<string> {
 
-        let message = "";
+        const response = await this.dialogResults.show(
+            settings.lastGameStatus,
+            settings.lastGameTime,
+        );
 
-        if (settings.lastGameStatus) {
-            message = MESSAGES[settings.lastGameStatus];
-        }
+        this.dialogResults.close();
+        return "next";
 
-        alert(`${message}\n${settings.lastGameTime}`);
-
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-            await timeout(1000);
-        }
     }
 }

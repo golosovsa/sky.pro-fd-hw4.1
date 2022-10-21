@@ -2,6 +2,7 @@ import "/style/style.scss";
 
 import { timeout } from "./common/timeout";
 import { DialogDifficulty } from "./widgets/dialog-difficulty";
+import { DialogResults } from "./widgets/dialog-results";
 import { CardTable } from "./widgets/card-table";
 import { Timer } from "./widgets/timer";
 import { PageDifficulty } from "./pages/page-difficulty";
@@ -13,6 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     (document as any).app = {};
 
     let app = (document as any).app as TApp;
+
+    window.addEventListener("beforeunload", () => {
+        localStorage.setItem("difficulty", app.settings.difficulty);
+        const totalTime =
+            app.settings.timeSpentPlaying +
+            (new Date().getTime() - app.settings.currentGameStartTime) /
+                1000;
+        localStorage.setItem("timeSpentPlaying", String(totalTime));
+    });
 
     app = {
         settings: {
@@ -30,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dialogDifficulty: new DialogDifficulty(),
             cardTable: new CardTable(),
             timer: new Timer(),
+            dialogResults: new DialogResults(),
         },
         pages: {},
         run: async function() {}
@@ -38,17 +49,29 @@ document.addEventListener("DOMContentLoaded", () => {
     app.pages = {
         pageSelectDifficulty: new PageDifficulty(
             app.container,
-            app.blocks.dialogDifficulty as DialogDifficulty
+            app.blocks.dialogDifficulty
         ),
         pageGame: new PageGame(
             app.container,
             app.blocks.cardTable as CardTable,
             app.blocks.timer as Timer
         ),
-        pageResults: new PageResults(app.container),
+        pageResults: new PageResults(
+            app.container,
+            app.blocks.dialogResults,
+        ),
     };
 
     app.settings.currentPage = app.pages.pageSelectDifficulty;
+
+    // DEBUG DELETE ME
+
+    // app.settings.lastGameStatus = "win";
+    // app.settings.lastGameTime = "12:34.5"
+
+    // app.settings.currentPage = app.pages.pageResults;
+
+    // DEBUG
 
     app.run = async function(): Promise<void> {
         const pages = Object.values(app.pages);
@@ -80,14 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     app.run();
-});
-
-window.addEventListener("beforeunload", () => {
-    let app = (document as any).app as TApp;
-    localStorage.setItem("difficulty", app.settings.difficulty);
-    const totalTime =
-        app.settings.timeSpentPlaying +
-        (new Date().getTime() - app.settings.currentGameStartTime) /
-            1000;
-    localStorage.setItem("timeSpentPlaying", String(totalTime));
 });

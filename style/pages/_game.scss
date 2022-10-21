@@ -29,6 +29,7 @@
         @include layout-size(246, 50);
         @include layout-font(24, 32, 400, white);
 
+        font-feature-settings: "'pnum' on, 'lnum' on";
         background: #7ac100;
         border-radius: scale-width(12);
         transition: background-color 0.2s linear;

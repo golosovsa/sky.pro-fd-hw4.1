@@ -127,6 +127,7 @@
 [data-letter].card__letter::after {
     @include layout-font(24, 32, 400, black);
 
+    font-feature-settings: 'pnum' on, 'lnum' on;
     content: attr(data-letter);
     text-transform: uppercase;
 }

@@ -66,6 +66,7 @@ export class PageGame extends BasePage {
 
     onStartPressed() {
         this.buttonStart.classList.add("game__button_disabled");
+        this.timer.start();
         this.gameStarted = true;
     }
 
@@ -151,10 +152,12 @@ export class PageGame extends BasePage {
                 this._attachCardEvent();
                 return;
             }
+            await timeout(100);
         }
     }
 
     async _defeat(settings: TSettings): Promise<string> {
+        this.timer.stop();
         settings.lastGameStatus = "defeat";
         settings.lastGameTime = this.timer.lastResult;
         await timeout(1000);
@@ -162,6 +165,7 @@ export class PageGame extends BasePage {
     }
 
     async _win(settings: TSettings): Promise<string> {
+        this.timer.stop();
         settings.lastGameStatus = "win";
         settings.lastGameTime = this.timer.lastResult;
         await timeout(1000);

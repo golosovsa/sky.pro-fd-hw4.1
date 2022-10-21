@@ -10,6 +10,7 @@
     &__title {
         @include layout-font(16, 32, 400, white);
 
+        font-feature-settings: "'pnum' on, 'lnum' on";
         position: absolute;
 
         &_minutes {
