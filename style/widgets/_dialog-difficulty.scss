@@ -17,6 +17,7 @@
     &__legend {
         @include layout-font(40, 48, 400, #004980);
 
+        font-feature-settings: "'pnum' on, 'lnum' on";
         width: scale-width(210);
         text-align: center;
     }
@@ -78,6 +79,7 @@
         @include layout-size(246, 50);
         @include layout-font(24, 32, 400, #fff);
 
+        font-feature-settings: "'pnum' on, 'lnum' on";
         background: #7ac100;
         border-radius: min(scale-width(12), scale-height(12));
         margin-top: scale-height(67);

@@ -9,7 +9,7 @@ import { timeout } from "../common/timeout";
 import { cardTableTemplate } from "../templates/card-table";
 import { Card } from "./card";
 
-const CARDS = [
+const CARDS: Array<TCard> = [
     { suit: "clubs", letter: "6" },
     { suit: "clubs", letter: "7" },
     { suit: "clubs", letter: "8" },
@@ -52,13 +52,17 @@ const CARDS = [
 ];
 
 export class CardTable {
+    element: HTMLElement;
+    cards: Array<Card>;
+    container?: HTMLElement;
+    
     constructor() {
-        this.element = templateEngine(cardTableTemplate);
+        this.element = templateEngine(cardTableTemplate) as HTMLElement;
         this.cards = [];
         this.container = undefined;
     }
 
-    spreadOut(container, pairsNumber) {
+    spreadOut(container: HTMLElement, pairsNumber: number) {
         const cardSet = randomSample(CARDS, pairsNumber);
         const pairsCardSet = [...cardSet, ...cardSet];
         const mixedPairsCardSet = randomShuffle(pairsCardSet);
@@ -76,19 +80,19 @@ export class CardTable {
         mixedPairsCardSet.forEach((card) => {
             this.cards.push(new Card(this.element, card.suit, card.letter));
         });
-        this.element.dataset.pairs = pairsNumber;
+        this.element.dataset.pairs = String(pairsNumber);
 
         this.container.appendChild(this.element);
     }
 
-    async showAll() {
+    async showAll(): Promise<void> {
         for (const card of this.cards) {
             card.show();
             await timeout(300);
         }
     }
 
-    async hideAll() {
+    async hideAll(): Promise<void> {
         for (const card of this.cards.reverse()) {
             card.hide();
             await timeout(100);

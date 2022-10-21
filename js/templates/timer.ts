@@ -1,4 +1,4 @@
-export const timerTemplate = {
+export const timerTemplate: TTemplateNode = {
     tag: "div",
     cls: "timer",
     content: [

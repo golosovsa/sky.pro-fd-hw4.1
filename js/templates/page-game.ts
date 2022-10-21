@@ -1,4 +1,4 @@
-export const pageGameTemplate = {
+export const pageGameTemplate: TTemplateNode = {
     tag: "section",
     cls: "game",
     content: [

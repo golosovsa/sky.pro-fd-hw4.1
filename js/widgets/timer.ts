@@ -6,14 +6,22 @@ import { templateEngine } from "../common/template-engine";
 import { timerTemplate } from "../templates/timer";
 
 export class Timer {
-    constructor(container = undefined) {
+    container?: HTMLElement;
+    element: HTMLElement;
+    startTime?: number;
+    timerID?: TInterval;
+    lastResult: string;
+    timeElement: HTMLElement;
+    started: boolean;
+
+    constructor(container?: HTMLElement) {
         this.container = undefined;
-        this.element = templateEngine(timerTemplate);
+        this.element = templateEngine(timerTemplate) as HTMLElement;
         this.startTime = undefined;
         this.timerID = undefined;
         this.lastResult = "00:00";
 
-        this.timeElement = this.element.querySelector(".timer__time");
+        this.timeElement = this.element.querySelector(".timer__time") as HTMLElement;
 
         this._updateTime = this._updateTime.bind(this);
 
@@ -24,7 +32,7 @@ export class Timer {
         this.started = false;
     }
 
-    setContainer(container) {
+    setContainer(container: HTMLElement) {
         this.container = container;
         this.container.appendChild(this.element);
     }
@@ -50,21 +58,24 @@ export class Timer {
         this.stop();
     }
 
-    _updateTime() {
+    _updateTime(): string {
         const timeNow = new Date().getTime();
-        const elapsedSeconds = (timeNow - this.startTime) / 1000;
-        let minutes = Math.floor(elapsedSeconds / 60);
-        let seconds = Math.floor((elapsedSeconds - 60 * minutes) * 10) / 10;
-
-        if (minutes < 10) {
-            minutes = `0${minutes}`;
+        
+        if (!this.startTime) {
+            return "";
         }
+
+        const elapsedSeconds = (timeNow - this.startTime) / 1000;
+        let minutes: number | string = Math.floor(elapsedSeconds / 60);
+        let seconds: number | string = Math.floor((elapsedSeconds - 60 * minutes) * 10) / 10;
 
         if (seconds < 10) {
             seconds = `0${seconds}`;
         }
 
-        if (minutes > 99) {
+        if (minutes < 10) {
+            minutes = `0${minutes}`;
+        } else if (minutes > 99) {
             minutes = 99;
             seconds = 59;
         }

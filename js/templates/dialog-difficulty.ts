@@ -1,9 +1,12 @@
-import { baseDialogTemplate } from "./base-dialog";
-
-export const dialogDifficultyTemplate = {
-    ...baseDialogTemplate,
+export const dialogDifficultyTemplate: TTemplateNode = {
+    tag: "dialog",
+    cls: "dialog",
     content: {
-        ...baseDialogTemplate.content,
+        tag: "form",
+        attrs: {
+            method: "dialog",
+        },
+        cls: "dialog__form",
         content: [
             {
                 tag: "fieldset",
