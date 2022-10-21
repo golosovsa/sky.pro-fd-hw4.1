@@ -10,17 +10,13 @@ type TTemplateNode = {
 }
 
 type TAsyncRun = (settings: TSettings) => Promise<string>;
-type TAsyncVoidRun = (settings: TSettings) => Promise<void>;
-
-interface IPage {
-    run: TAsyncRun;
-}
+type TAsyncVoidRun = () => Promise<void>;
 
 type TSettings = {
     difficulty: string,
     timeSpentPlaying: number,
     currentGameStartTime: number,
-    currentPage?: IPage,
+    currentPage?: unknown,
     lastGameStatus?: string,
     lastGameTime?: string,
 }
@@ -35,7 +31,7 @@ type TInterval = ReturnType<typeof setInterval>;
 type TApp = {
     settings: TSettings,
     container: HTMLElement,
-    blocks: Dictionary<unknown>,
-    pages: Dictionary<IPage>,
+    blocks: Dictionary<any>,
+    pages: Dictionary<any>,
     run: TAsyncVoidRun,
 }

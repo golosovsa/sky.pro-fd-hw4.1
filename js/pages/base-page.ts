@@ -2,7 +2,7 @@
  * class base page
  */
 
-export class BasePage implements IPage{
+export class BasePage{
     container: HTMLElement;
     constructor(container: HTMLElement) {
         this.container = container;

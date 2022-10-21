@@ -38,6 +38,8 @@ export class PageGame extends BasePage {
         this.timer = timer;
 
         this.element = templateEngine(pageGameTemplate) as HTMLElement;
+        console.log(this.element);
+        console.log(this.container);
 
         this.cardTableContainer = this.element.querySelector(".game__main") as HTMLElement;
         this.timerContainer = this.element.querySelector(".game__timer") as HTMLElement;
@@ -110,7 +112,9 @@ export class PageGame extends BasePage {
             DIFFICULTY_VALUES[settings.difficulty] || DEFAULT_DIFFICULTY_VALUE;
 
         this.cardTable.spreadOut(this.cardTableContainer, numberOfPairs);
-        this.container.replaceChildren(this.element);
+        console.log(this);
+        this.container.replaceChildren();
+        this.container.appendChild(this.element);
 
         this._resetGameStatuses();
         this._enableStartButton();
@@ -119,7 +123,6 @@ export class PageGame extends BasePage {
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
-
             if (this.pairOfCards.length < 2) {
                 await timeout(100);
                 continue;

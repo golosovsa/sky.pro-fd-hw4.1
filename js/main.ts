@@ -50,14 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     app.settings.currentPage = app.pages.pageSelectDifficulty;
 
-    (document as any).app.run = async function(): Promise<void> {
-        const pages = Object.values((document as any).app.pages);
-        const _nextPage = (): IPage => {
+    app.run = async function(): Promise<void> {
+        const pages = Object.values(app.pages);
+        const _nextPage = () => {
             const pageIndex =
-                (pages.indexOf((document as any).app.settings.currentPage) + 1) %
+                (pages.indexOf(app.settings.currentPage) + 1) %
                 pages.length;
             
-            return pages[pageIndex] as IPage;
+            return pages[pageIndex];
         };
 
         if (!app.settings.currentPage) {
@@ -66,17 +66,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            const action = await app.settings.currentPage.run(
-                (document as any).app.settings
+            if (!app.settings.currentPage) {
+                throw Error("Error");
+            }
+            const action = await (app.settings.currentPage as any).run(
+                app.settings
             );
             if (action === "next") {
-                (document as any).app.settings.currentPage = _nextPage();
+                app.settings.currentPage = _nextPage();
             }
             await timeout(300);
         }
     };
 
-    (document as any).app.run();
+    app.run();
 });
 
 window.addEventListener("beforeunload", () => {
