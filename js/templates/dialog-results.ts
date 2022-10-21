@@ -1,5 +1,3 @@
-import { baseDialogTemplate } from "./base-dialog";
-
 export const dialogResultsTemplate: TTemplateNode = {
     tag: "dialog",
     cls: "dialog",
