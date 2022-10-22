@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "strict": true,
@@ -10,5 +9,6 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "lib": ["ES6", "DOM", "DOM.Iterable"],
+    "esModuleInterop": true,
   },
 }
