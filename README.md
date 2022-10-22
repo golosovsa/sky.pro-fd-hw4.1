@@ -41,3 +41,4 @@
 -   [x] Made game logic
 -   [x] .js -> .ts
 -   [x] Pages 3-4 made up
+-   [x] Add some tests
