@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  frontend:
+    image: golosovsa/skypro-fd-cw4:latest
+    build:
+      context: .
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/logs:/var/log/nginx
