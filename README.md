@@ -18,6 +18,10 @@
 
 [source](https://skyengpublic.notion.site/4-5-TypeScript-477061d26f2d493682caa6b2eaf5d9b1)
 
+# Homework 4.6
+
+[source](https://skyengpublic.notion.site/4-6-Unit-5b478ddce8a5497b94084c8e1a8df495)
+
 # layout
 
 [source](https://www.figma.com/file/Xk8ocvZA9NlMmA0szZeI5h/%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-JS?node-id=4325%3A2)
@@ -37,3 +41,4 @@
 -   [x] Made game logic
 -   [x] .js -> .ts
 -   [x] Pages 3-4 made up
+-   [x] Add some tests
