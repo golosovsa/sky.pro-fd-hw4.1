@@ -32,6 +32,11 @@ export class Timer {
         this.started = false;
     }
 
+    reset() {
+        this.lastResult = "00:00";
+        this.timeElement.textContent = this.lastResult;
+    }
+
     setContainer(container: HTMLElement) {
         this.container = container;
         this.container.appendChild(this.element);

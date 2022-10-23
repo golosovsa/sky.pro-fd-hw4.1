@@ -27,7 +27,7 @@ export class PageGame extends BasePage {
     cardTableContainer: HTMLElement;
     timerContainer: HTMLElement;
     buttonStart: HTMLElement;
-    gameStarted: boolean;
+    gameStartOver: boolean;
     pairOfCards: Array<Card>;
     pairsOfCardsGuessed: number;
 
@@ -48,13 +48,13 @@ export class PageGame extends BasePage {
         this.onStartPressed = this.onStartPressed.bind(this);
         this.onClickCardEvent = this.onClickCardEvent.bind(this);
 
-        this.gameStarted = false;
+        this.gameStartOver = false;
         this.pairOfCards = [];
         this.pairsOfCardsGuessed = 0;
     }
 
     _resetGameStatuses() {
-        this.gameStarted = false;
+        this.gameStartOver = false;
         this.pairOfCards = [];
         this.pairsOfCardsGuessed = 0;
     }
@@ -64,10 +64,14 @@ export class PageGame extends BasePage {
         this.buttonStart.addEventListener("click", this.onStartPressed);
     }
 
-    onStartPressed() {
+    _disableStartButton() {
         this.buttonStart.classList.add("game__button_disabled");
-        this.timer.start();
-        this.gameStarted = true;
+        this.buttonStart.removeEventListener("click", this.onStartPressed);
+    }
+
+    onStartPressed() {
+        this.gameStartOver = true;
+        this._disableStartButton();
     }
 
     async _showCardsQuickly(): Promise<void> {
@@ -106,40 +110,62 @@ export class PageGame extends BasePage {
         this.pairOfCards.push(card);
     }
 
-    async run(settings: TSettings): Promise<string> {
+    async _startOver(settings: TSettings) {
         const numberOfPairs =
             DIFFICULTY_VALUES[settings.difficulty] || DEFAULT_DIFFICULTY_VALUE;
 
         this.cardTable.spreadOut(this.cardTableContainer, numberOfPairs);
         this.container.replaceChildren(this.element);
 
+        await timeout(500);
+        await this._showCardsQuickly();
+        this._attachCardEvent();
+
         this._resetGameStatuses();
         this._enableStartButton();
 
-        await this._waitForStartButtonPressed();
+        return numberOfPairs;
+    }
+
+    async run(settings: TSettings): Promise<string> {
+        
+        this.timer.reset();
+        this.timer.start();
+        this._disableStartButton();
+        
+        // eslint-disable-next-line no-constant-condition
+        while (true){
+            const numberOfPairs = await this._startOver(settings);
 
         // eslint-disable-next-line no-constant-condition
-        while (true) {
-            if (this.pairOfCards.length < 2) {
-                await timeout(100);
-                continue;
-            }
+            while (true) {
+                if (this.gameStartOver) {
+                    await this.cardTable.hideAll();
+                    await timeout(500);
+                    break;
+                }
 
-            if (this.pairOfCards.length > 2) {
-                this._detachCardEvent();
-                return await this._defeat(settings);
-            }
+                if (this.pairOfCards.length < 2) {
+                    await timeout(100);
+                    continue;
+                }
 
-            if (this.pairOfCards[0].valueOf() !== this.pairOfCards[1].valueOf()) {
-                this._detachCardEvent();
-                return await this._defeat(settings);
-            }
-                
-            this.pairOfCards = [];
-            this.pairsOfCardsGuessed++;
-            if (this.pairsOfCardsGuessed === numberOfPairs) {
-                this._detachCardEvent();
-                return await this._win(settings);
+                if (this.pairOfCards.length > 2) {
+                    this._detachCardEvent();
+                    return await this._defeat(settings);
+                }
+
+                if (this.pairOfCards[0].valueOf() !== this.pairOfCards[1].valueOf()) {
+                    this._detachCardEvent();
+                    return await this._defeat(settings);
+                }
+                    
+                this.pairOfCards = [];
+                this.pairsOfCardsGuessed++;
+                if (this.pairsOfCardsGuessed === numberOfPairs) {
+                    this._detachCardEvent();
+                    return await this._win(settings);
+                }
             }
         }
     }
@@ -147,11 +173,7 @@ export class PageGame extends BasePage {
     async _waitForStartButtonPressed(): Promise<void> {
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            if (this.gameStarted) {
-                await this._showCardsQuickly();
-                this._attachCardEvent();
-                return;
-            }
+            
             await timeout(100);
         }
     }
